@@ -4,6 +4,7 @@ export interface ExpenseProps {
   name: string;
   icon: string;
   type: ExpenseType;
+  userId: string;
   value?: number;
 }
 
@@ -39,6 +40,13 @@ export class Expense extends BaseEntity {
 
   public get type(): ExpenseType {
     return this.props.type;
+  }
+  public set userId(userId: string) {
+    this.props.userId = userId;
+  }
+
+  public get userId(): string {
+    return this.props.userId;
   }
   public get value(): number | null | undefined {
     return this.props.value;

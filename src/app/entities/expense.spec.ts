@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import { Expense } from './expense';
 
 describe('Expense', () => {
@@ -7,6 +8,7 @@ describe('Expense', () => {
         icon: 'expense',
         name: 'Banco 1',
         type: 'expense',
+        userId: randomUUID(),
       },
       {},
     );
@@ -18,6 +20,7 @@ describe('Expense', () => {
         icon: 'expense',
         name: 'Banco 1',
         type: 'expense',
+        userId: randomUUID(),
       },
       {},
     );
