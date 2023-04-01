@@ -1,3 +1,4 @@
+import { ExpenseType } from '@app/entities/expense';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
 export class CreateExpenseBody {
@@ -8,7 +9,7 @@ export class CreateExpenseBody {
   icon: string;
 
   @IsNotEmpty()
-  type: string;
+  type: ExpenseType;
 
   @IsNotEmpty()
   @IsUUID()
