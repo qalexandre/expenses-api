@@ -14,6 +14,7 @@ import {
 } from '@nestjs/common';
 import { AddValueExpenseBody } from '../dtos/expense/add-value-expense-body';
 import { CreateExpenseBody } from '../dtos/expense/create-expense-body';
+import { ExpenseViewModel } from '../view-models/expense-view-model';
 
 @Controller('expenses')
 export class ExpensesController {
@@ -29,14 +30,14 @@ export class ExpensesController {
   async getById(@Param('id') id: string) {
     const { expense } = await this.getExpense.execute({ expenseId: id });
 
-    return { expense };
+    return { expense: ExpenseViewModel.toHTTP(expense) };
   }
 
   @Get('from/:userId')
   async getFromUser(@Param('userId') userId: string) {
     const { expenses } = await this.getUserExpense.execute({ userId });
 
-    return { expenses };
+    return { expenses: expenses.map(ExpenseViewModel.toHTTP) };
   }
 
   @Patch('value')
@@ -54,6 +55,6 @@ export class ExpensesController {
   async create(@Body() body: CreateExpenseBody) {
     const { expense } = await this.createExpense.execute(body);
 
-    return { expense };
+    return { expense: ExpenseViewModel.toHTTP(expense) };
   }
 }

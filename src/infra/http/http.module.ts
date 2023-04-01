@@ -8,10 +8,11 @@ import { CreateExpense } from '@app/use-cases/expense/create-expense';
 import { DeleteExpense } from '@app/use-cases/expense/delete-expense';
 import { GetExpense } from '@app/use-cases/expense/get-expense';
 import { GetUserExpense } from '@app/use-cases/expense/get-user-expenses';
+import { ExpensesController } from './controllers/expenses.controller';
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [UsersControllers],
+  controllers: [UsersControllers, ExpensesController],
   providers: [
     CreateUser,
     GetUser,

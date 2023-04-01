@@ -2,6 +2,7 @@ import { CreateUser } from '@app/use-cases/user/create-user';
 import { GetUser } from '@app/use-cases/user/get-user';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateUserBody } from '../dtos/user/create-user-body';
+import { UserViewModel } from '../view-models/user-view-model';
 
 @Controller('users')
 export class UsersControllers {
@@ -11,13 +12,17 @@ export class UsersControllers {
   async getById(@Param('id') id: string) {
     const { user } = await this.getUser.execute({ userId: id });
 
-    return { user };
+    if (!user) {
+      return {};
+    }
+
+    return { user: UserViewModel.toHTTP(user) };
   }
 
   @Post()
   async create(@Body() body: CreateUserBody) {
     const { user } = await this.createUser.execute(body);
 
-    return { user };
+    return { user: UserViewModel.toHTTP(user) };
   }
 }
