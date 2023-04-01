@@ -1,8 +1,9 @@
 import { BaseEntity, BaseEntityProps } from './base-entity';
+import { Email } from './email';
 
 export interface UserProps {
   name: string;
-  email: string;
+  email: Email;
   password: string;
 }
 
@@ -22,11 +23,11 @@ export class User extends BaseEntity {
     return this.props.name;
   }
 
-  public set email(email: string) {
+  public set email(email: Email) {
     this.props.email = email;
   }
 
-  public get email(): string {
+  public get email(): Email {
     return this.props.email;
   }
   public set password(password: string) {

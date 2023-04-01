@@ -3,8 +3,11 @@ import { BaseEntity, BaseEntityProps } from './base-entity';
 export interface ExpenseProps {
   name: string;
   icon: string;
+  type: ExpenseType;
   value?: number;
 }
+
+type ExpenseType = 'expense' | 'income';
 
 export class Expense extends BaseEntity {
   private props: ExpenseProps;
@@ -30,6 +33,13 @@ export class Expense extends BaseEntity {
     return this.props.icon;
   }
 
+  public set type(type: ExpenseType) {
+    this.props.type = type;
+  }
+
+  public get type(): ExpenseType {
+    return this.props.type;
+  }
   public get value(): number | null | undefined {
     return this.props.value;
   }
