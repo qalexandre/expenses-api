@@ -5,5 +5,6 @@ export abstract class ExpensesRepository {
   abstract findById(expenseId: string): Promise<Expense | null>;
   abstract save(expense: Expense): Promise<void>;
   abstract countManyByUserId(userId: string): Promise<number>;
-  abstract findManyByUSerId(userId: string): Promise<Expense[]>;
+  abstract findManyByUserId(userId: string): Promise<Expense[]>;
+  abstract delete(expenseId: string): Promise<void>;
 }

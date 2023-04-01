@@ -8,7 +8,7 @@ export interface ExpenseProps {
   value?: number;
 }
 
-type ExpenseType = 'expense' | 'income';
+export type ExpenseType = 'expense' | 'income';
 
 export class Expense extends BaseEntity {
   private props: ExpenseProps;
